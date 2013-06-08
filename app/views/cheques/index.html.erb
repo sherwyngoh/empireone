@@ -2,13 +2,24 @@
     <% @cheques.each do |cheque| %>
 
 <% if params[:sender].present? %>
-<h3> Showing all Cheques from    <%= cheque.sender %>  </h3>
-<% if true  %> <% break%><%end%>
-<% elsif params[:recipient].present? %>
-<h3> Showing all Cheques to <%= cheque.recipient %> </h3>
-<% if true  %> <% break%><%end%>
+    <h3> Showing all Cheques from   
+       <%= cheque.sender %> 
+     </h3>
+
+  <% if true  %> <% break%><%end%>
+
+  <% elsif params[:recipient].present? %>
+    <h3> Showing all Cheques to 
+            <%= cheque.recipient %> 
+    </h3>
+
+  <% if true  %> <% break%><%end%>
+
 <%end %> <%end %>
 
+<% if Cheque.all ==[] %>
+<h1> No Cheques Created Yet </h1>
+<%else%>
 
 <table class="table table-striped">
   <thead>
@@ -84,7 +95,7 @@ Include all other checks for:
 <div class=" btn btn-primary btn-large">
   New Cheque</div><%end%>
 
-
+<%end%>
 
 
 <script>
