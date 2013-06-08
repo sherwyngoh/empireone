@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+<hr>
+<div class="id"><h3>
+   Cheque ID: 000<%=@cheque.id%></h3>
+</div>
+<%if @cheque.cross? %>
+<div class="container-fluid che" >
+  <%else %>
+  <div class="container-fluid che1">
+    <%end%>
+    <div class="sender" >
+  <%= @cheque.sender %>
+  </div>
+  <div class="recipient">
+  <%= @cheque.recipient %>
+</div>
+<div class ="amount">
+  <%= number_to_currency_in_words(@cheque.amount,connector: ' and ').upcase  %> ONLY--
+  </div>
+  <div class="dat">
+  <%= @cheque.created_at.strftime("%d %b %Y")%>
+ </div>
+<div class="amountnumber">
+<%= number_to_currency(@cheque.amount) %>
+</div>
+
+
+
+</div>
+
+<hr>
+<div>
+<%= link_to edit_cheque_path(@cheque) do %> <i class="icon-pencil icon-2x"></i><%end%>
+    <%= link_to @cheque, method: :delete, data: { confirm: 'Are you sure?' } do%><i class="icon-remove-sign icon-2x"></i><%end%>  
+</div>
+</div>

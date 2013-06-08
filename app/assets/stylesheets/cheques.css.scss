@@ -1,0 +1,61 @@
+body{
+    padding:30px;
+}
+body a:hover{
+    text-decoration: none;
+}
+.ll{
+    display:none;
+}
+.bb{
+    display:inline-block;
+}
+.che{
+    background-image: url("cheque1.jpg");
+    width:750px;
+    height:326px;
+    font-family: Century Gothic;
+    margin-top:80px;
+    border:3px solid grey;
+    color:grey;
+}
+.che1{
+    background-image: url("cheque.jpg");
+    width:750px;
+    height:326px;
+    font-family: Century Gothic;
+    margin-top:80px;
+    border:3px solid grey;
+    color:grey;
+}
+.sender{
+    margin-left:550px;
+    margin-top:250px;
+    position:absolute;
+
+}
+.recipient{
+    position:absolute;
+    margin-top:130px;
+    margin-left:80px;
+}
+.amount{
+    position:absolute;
+    margin-top:170px;
+    margin-left:20px;
+    max-width: 500px;
+    text-align: center;
+}
+.dat{
+    position:absolute;
+    margin-top:65px;
+    margin-left:580px;
+}
+.id{
+color:grey;
+}
+.amountnumber{
+    position: absolute;
+    margin-top:140px;
+    margin-left:590px;
+}

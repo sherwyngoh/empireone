@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>empireone</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+   
+ <div class="container-fluid" style="border:3px solid grey;padding:30px;">
+    <div class="row-fluid">
+        <div class="span12">
+             <%= link_to root_path do %>
+                <h1 style="color:#8a9f45"><i class="icon-money" style="color:#8a9f45"></i>   Cheques</h1>
+            <%end%></div>
+
+
+
+
+ 
+
+                <%= yield %>
+
+</div>
+</body>
+</html>
