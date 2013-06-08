@@ -1,20 +1,21 @@
 class ChequesController < ApplicationController
+  WillPaginate.per_page = 20
   # GET /cheques
   # GET /cheques.json
   def index
     
     if params[:sender].present?
-      @cheques = Cheque.where(:sender => params[:sender]) .paginate(:page => params[:page], :per_page =>10)
+      @cheques = Cheque.where(:sender => params[:sender]) .paginate(:page => params[:page])
       if Cheque.where(:recipient => params[:sender])
-      @chequez= Cheque.where(:recipient => params[:sender]).paginate(:page => params[:page], :per_page =>10)
+      @chequez= Cheque.where(:recipient => params[:sender]).paginate(:page => params[:page])
       end
     elsif params[:recipient].present?
-      @cheques = Cheque.where(:recipient => params[:recipient]).paginate(:page => params[:page], :per_page =>10)
+      @cheques = Cheque.where(:recipient => params[:recipient]).paginate(:page => params[:page])
         if Cheque.where(:sender => params[:recipient])
-      @chequez= Cheque.where(:sender => params[:recipient]).paginate(:page => params[:page], :per_page =>10)
+      @chequez= Cheque.where(:sender => params[:recipient]).paginate(:page => params[:page])
       end
     else
-      @cheques = Cheque.paginate(:page => params[:page], :per_page =>10)
+      @cheques = Cheque.paginate(:page => params[:page])
     end
   end
 

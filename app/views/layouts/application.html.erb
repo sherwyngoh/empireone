@@ -7,8 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-   
- <div class="container-fluid" style="border:3px solid grey;padding:30px;">
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <a class="brand " href="#">  <span class="topwords">
+
+
+    <%= image_tag ('ruby.png') ,:class => "ruby"%>
+    <%= image_tag ('rails.png') ,:class => "ruby"%>
+    <small>@Ubultus</small>
+</span>
+</a>
+
+  </div>
+</div>
+
+
+    </div>
+  </div>
+ <div class="container-fluid" style="border:1px dashed grey;padding:30px;">
     <div class="row-fluid">
         <div class="span12">
              <%= link_to root_path do %>
@@ -23,5 +39,7 @@
                 <%= yield %>
 
 </div>
+
+<%= render 'footer'%>
 </body>
 </html>

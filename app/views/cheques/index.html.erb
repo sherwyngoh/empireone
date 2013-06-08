@@ -18,7 +18,7 @@
 <%end %> <%end %>
 
 <% if Cheque.all ==[] %>
-<h1> No Cheques Created Yet </h1>
+<h3> No Cheques Created Yet </h3>
 <%else%>
 
 <table class="table table-striped">
@@ -28,7 +28,6 @@
       <th>Sender </th>
       <th>Recipient </th>
       <th>($) </th>
-      <th>Crossed?  </th>
       <th>Date</th>
       <th></th>
       <th></th>
@@ -43,8 +42,7 @@
         <td><%= link_to  cheques_path(:sender => cheque.sender) do  %>  <%=cheque.sender%><%end%></td>
         <td><%= link_to  cheques_path(:recipient => cheque.recipient) do %><%=cheque.recipient%><%end%></td>
         <td><%= number_to_currency(cheque.amount) %></td>
-        <td> <%= cheque.cross %></td>
-        <td> <%= cheque.date.to_s(:rfc822) %></td>
+        <td> <%= cheque.created_at.strftime("%d %b %Y") %></td>
         <td><%= link_to cheque  do %><i class="icon-zoom-in icon-large"></i><%end%></td>
      <td><%= link_to edit_cheque_path(cheque) do %> <i class="icon-pencil icon-large"></i><%end%></td>
         <td><%= link_to cheque, method: :delete, data: { confirm: 'Are you sure?' } do%><i class="icon-remove-sign icon-large"></i><%end%>      </tr>
@@ -59,8 +57,7 @@
         <td><%= link_to  cheques_path(:sender => cheque.sender) do  %><%=cheque.sender%><%end%></td>
         <td><%= link_to  cheques_path(:recipient => cheque.recipient) do %><%=cheque.recipient%><%end%></td>
         <td><%= number_to_currency(cheque.amount) %></td>
-        <!--td>---<%= number_to_currency_in_words(cheque.amount,connector: ' and ').upcase  %> ONLY--</td-->
-        <td> <%= cheque.date.to_s(:rfc822) %></td>
+        <td> <%= cheque.created_at.strftime("%d %b %Y") %></td>
     <td><%= link_to cheque  do %><i class="icon-zoom-in icon-large"></i><%end%></td>
      <td><%= link_to edit_cheque_path(cheque) do %> <i class="icon-pencil icon-large"></i><%end%></td>
         <td><%= link_to cheque, method: :delete, data: { confirm: 'Are you sure?' } do%><i class="icon-remove-sign icon-large"></i><%end%>      </tr>
@@ -73,11 +70,11 @@
 
 <br>
 
-<% if params[:sender].present? || params[:recipient].present? %>
-<div class="1 btn btn-large btn-primary"> 
+<% if params[:sender].present? || params[:recipient].present?%>
+<div class="1 btn btn-large btn-primary" id="#butto"> 
     <% @cheques.each do |cheque| %>
       
-Include all other checks for:
+Include/Exclude all other checks for:
   <% if params[:sender].present?%>
   <%= cheque.sender %>
   <% if true  %> <% break%><%end%>
@@ -91,11 +88,12 @@ Include all other checks for:
 <%end end %>
 </div>
     <%= will_paginate @posts %>
+    <%end%>
     <%= link_to new_cheque_path do %>
-<div class=" btn btn-primary btn-large">
-  New Cheque</div><%end%>
+<div class=" btn btn-success btn-large">
+  Create New Cheque</div><%end%>
 
-<%end%>
+
 
 
 <script>
@@ -104,5 +102,6 @@ Include all other checks for:
     $(".ll").toggle("fast");
   });
 });
+
 </script>
 
